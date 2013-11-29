@@ -1,51 +1,24 @@
-/**
- * Clipboard plugin for PhoneGap
- * window.plugins.SMSComposer
- * 
- * @constructor
+/*
+ * SMSComposer plugin for Cordova
+ * @author Matias Singers
+ * @file smsComposer.js
  */
-function SMSComposer()
-{
-	this.resultCallback = null;
-}
 
-SMSComposer.ComposeResultType =
-{
-Cancelled:0,
-Sent:1,
-Failed:2,
-NotSent:3
-}
+var exec = require("cordova/exec");
 
-SMSComposer.prototype.showSMSComposer = function(toRecipients, body)
-{
-
-	var args = {};
+function SMSComposer(){
 	
-	if(toRecipients)
-		args.toRecipients = toRecipients;
-	
-	if(body)
-		args.body = body;
-	
-	PhoneGap.exec("SMSComposer.showSMSComposer",args);
 }
 
-SMSComposer.prototype.showSMSComposerWithCB = function(cbFunction,toRecipients,body)
-{
-	this.resultCallback = cbFunction;
-	this.showSMSComposer.apply(this,[toRecipients,body]);
-}
+SMSComposer.prototype.show = function(recipient, body, successCallback, errorCallback){
+	recipient = recipient || '';
+	body = body || '';
+	successCallback = (typeof successCallback === 'function') ? successCallback : null;
+	errorCallback = (typeof errorCallback === 'function') ? errorCallback : null;
 
-SMSComposer.prototype._didFinishWithResult = function(res)
-{
-	this.resultCallback(res);
-}
+	exec(successCallback, errorCallback, "SMSComposer", "showSMSComposer", [recipient, body]);
+};
 
-PhoneGap.addConstructor(function() {
-						
-	if(!window.plugins)	{
-		window.plugins = {};
-	}
-	window.plugins.smsComposer = new SMSComposer();
-});
+// Instantiate the smsComposer
+var smsComposer = new SMSComposer();
+module.exports = smsComposer;
