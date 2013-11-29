@@ -8,6 +8,8 @@
 
 @implementation SMSComposer
 
+@synthesize callback;
+
 - (CDVPlugin *)initWithWebView:(UIWebView *)theWebView
 {
 	self = (SMSComposer *)[super initWithWebView:theWebView];
@@ -16,7 +18,8 @@
 
 - (void)showSMSComposer:(CDVInvokedUrlCommand *)command
 {
-	callback = command.callbackId;
+	self.callback = [[arguments objectAtIndex:0] retain];
+
 	if (![MFMessageComposeViewController canSendText]) {
 		NSLog(@"SMS composer is not available on this platform.");
 
@@ -62,6 +65,8 @@
 	
 	[self.viewController dismissViewControllerAnimated:YES completion:nil];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:callback];
+
+    [self.callback release];
 }
 
 @end

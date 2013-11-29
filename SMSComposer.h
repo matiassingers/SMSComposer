@@ -12,8 +12,11 @@
 
 NSString *callback;
 
-@interface SMSComposer : CDVPlugin <MFMessageComposeViewControllerDelegate>{}
-@property (retain) NSString *callback;
+@interface SMSComposer : CDVPlugin <MFMessageComposeViewControllerDelegate>{
+    NSString* callbackId;
+}
+
+@property (nonatomic, retain) NSString* callbackId;
 
 - (void)showSMSComposer:(CDVInvokedUrlCommand*)command;
 @end
