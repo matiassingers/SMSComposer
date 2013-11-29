@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		id="com.matiassingers.smscomposer" version="0.0.1">
+	
+	<name>SMSComposer</name>
+	<description>Programmatically compose SMS text messages</description>
+	<author>Matias Singers - mail@matiassingers.com</author>
+	<keywords>cordova,sms,text</keywords>
+
+	<engines>
+		<engine name="cordova" version=">=2.7.0" platform="ios" />
+	</engines>
+
+	<js-module src="smsComposer.js" name="SMSComposer">
+		<clobbers target="window.SMSComposer" />
+	</js-module>
+
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="SMSComposer">
+				<param name="ios-package" value="SMSComposer"/>
+			</feature>
+			<plugin name="SMSComposer" value="SMSComposer"/>
+		</config-file>
+
+		<header-file src="SMSComposer.h" />
+		<source-file src="SMSComposer.m" />
+
+		<framework src="MessageUI.framework" />
+
+	</platform>
+
+	<license>MIT</license>
+</plugin>
