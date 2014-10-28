@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-		id="com.matiassingers.smscomposer" version="0.0.1">
+		id="com.redapesolutions.smscomposer" version="0.0.1">
 	
 	<name>SMSComposer</name>
 	<description>Programmatically compose SMS text messages</description>
-	<author>Matias Singers - mail@matiassingers.com</author>
+	<author>Red Ape Solutions</author>
 	<keywords>cordova,sms,text</keywords>
 
 	<engines>
-		<engine name="cordova" version=">=2.7.0" platform="ios" />
+		<engine name="cordova" version=">=3.0.0" platform="ios" />
 	</engines>
 
 	<js-module src="smsComposer.js" name="SMSComposer">
-		<clobbers target="window.SMSComposer" />
+		<clobbers target="SMSComposer" />
 	</js-module>
 
 	<platform name="ios">
