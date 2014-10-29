@@ -20,14 +20,12 @@
 			<feature name="SMSComposer">
 				<param name="ios-package" value="SMSComposer"/>
 			</feature>
-			<plugin name="SMSComposer" value="SMSComposer"/>
 		</config-file>
 
 		<header-file src="SMSComposer.h" />
 		<source-file src="SMSComposer.m" />
 
 		<framework src="MessageUI.framework" />
-
 	</platform>
 
 	<license>MIT</license>
